@@ -1,5 +1,5 @@
 # Cryptanalysis Module
-This program is intended to take in a file containing text as input, process the contents, and provide useful information to aid in cryptanalysis. The following are features that have been or are intended to be added.
+This program is intended to take in a file containing text as input, process the contents, and provide useful information to aid in cryptanalysis. The following are features that have been or are intended to be added. A test txt file has been included the plaintext of which is "Hello world. I am a test file used to check everything is working. Please use me to make sure the program is working correctly!". Use this to test the program is working.
 
 ## Intended Features Overview
 ### Information features
