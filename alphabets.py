@@ -4,18 +4,20 @@ alphabets = {
     "cyrillic": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
     "punctuation": r".,><?!'£$%^&*()#~`¬|[]}\{=+-_" + '"'}
 
-msg = "hello world"
 
 def check_alphabets(letters):
-    present_alphabets = {}
+    present_alphabets = {"english": False, "greek": False, "cyrillic": False, "punctuation": False}
     for l in letters:
         for a in alphabets:
             if l in alphabets[a]:
                 present_alphabets[a] = True
-            else:
-                present_alphabets[a] = False
+                break
     return present_alphabets
 
 
-if __name__ == "main":
-    print(check_alphabets(msg))    
+if __name__ == "__main__":
+    msg = "hello world κ"
+    present_alphabets = check_alphabets(msg)
+    for i in present_alphabets:
+        if present_alphabets[i] == True:
+            print(i)
