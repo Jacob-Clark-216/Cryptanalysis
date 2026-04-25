@@ -19,12 +19,14 @@ while content == None:
     except FileNotFoundError:
         print("Sorry, that file cannot be found. It may be missing or be in a differnt location. Please check the file location and spelling before trying again.")
 
+# Split content into lists of different components
 
 # Split the content into individual lines
 lines = content.splitlines()
 
 # Replace all newline characters with spaces and then split the content at any spaces to get a list of words
 words = content.replace("\n", " ").split(" ")
+unique_words = set(words)
 
 # Record Characters
 chars = list(content.replace("\n", ""))
@@ -42,7 +44,7 @@ for c in unique_chars:
 # Provide Output
 output = "\n\nFile contains:\n"
 output += f"{len(lines)} lines\n"
-output += f"{len(words)} words\n"
+output += f"{len(words)} words ({len(unique_words)} unique)\n"
 output += f"{len(chars)} non-whitespace characters\n\n"
 output += f"{len(unique_chars)} Unique Characters Found: {unique_chars}\n\n"
 output += f"Character stats:\n"
