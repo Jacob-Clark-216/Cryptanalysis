@@ -1,11 +1,11 @@
 alphabets = {
     "english": "abcdefghijklmnopqrstuvwxyz",
-    "greek": "αβγδεζηθικλμνξοπρσςτυφχψω",
+    "greek": "αβγδεζηθικλμνξοπρσςτυφχψωάέήίόύώ",
     "cyrillic": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "punctuation": r".,><?!'£$%^&*()#~`¬|[]}\{=+-_" + '"'}
+    "punctuation": r".,><?!'£$%^&*()#~`¬|[]}\{=+-_" + '"',
+    }
 
 
-# TODO: Ensure tonos greek letters produce greek as True
 def check_alphabets(letters):
     present_alphabets = {"english": False, "greek": False, "cyrillic": False, "punctuation": False}
     for l in letters:
