@@ -1,4 +1,5 @@
 from pathlib import Path
+import content_processor as cp
 
 # Take file location from the user
 def get_file_location():
@@ -19,37 +20,27 @@ while content == None:
     except FileNotFoundError:
         print("Sorry, that file cannot be found. It may be missing or be in a differnt location. Please check the file location and spelling before trying again.")
 
-# Split content into lists of different components
-
-# Split the content into individual lines
-lines = content.splitlines()
-
-# Replace all newline characters with spaces and then split the content at any spaces to get a list of words
-words = content.replace("\n", " ").split(" ")
-unique_words = set(words)
-
-# Record Characters
-chars = list(content.replace("\n", ""))
-unique_chars = set(content.replace("\n", " "))
-
-# Identify character counts
-char_counts = {}
-for c in unique_chars:
-    char_counts[c] = content.count(c)
-# Calculate character frequency
-char_frequency = {}
-for c in unique_chars:
-    char_frequency[c] = (char_counts[c]*100)/len(chars)
+print("Processing Lines...")
+lines = cp.get_lines(content)
+unique_lines = cp.unique(lines)
+print("Processing Words...")
+words = cp.get_words(content)
+unique_words = cp.unique(words)
+word_counts = cp.count(unique_words)
+print("Processing Characters")
+chars = cp.get_characters(content)
+unique_chars = cp.unique(chars)
+char_counts = cp.count(chars)
 
 # Provide Output
 output = "\n\nFile contains:\n"
 output += f"{len(lines)} lines\n"
 output += f"{len(words)} words ({len(unique_words)} unique)\n"
-output += f"{len(chars)} non-whitespace characters\n\n"
+output += f"{len(chars)} characters\n\n"
 output += f"{len(unique_chars)} Unique Characters Found: {unique_chars}\n\n"
 output += f"Character stats:\n"
 for i in char_counts:
-    output += f"{i} | {char_counts[i]} | {char_frequency[i]:.2f}%\n"
+    output += f"{i} | {char_counts[i]} ({(char_counts[i]*100)/len(chars):2.2f}%)\n"
 print(output)
 
 # print(f"{content}\n")
