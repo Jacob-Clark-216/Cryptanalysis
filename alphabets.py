@@ -6,13 +6,13 @@ alphabets = {
     "arabic numerals": "1234567890"
     }
 
-
+# Take a list of letters and output a dictionary of alphabets with boolean values representing if they are present or not
 def check_alphabets(letters):
-    present_alphabets = {"english": False, "greek": False, "cyrillic": False, "punctuation": False}
+    present_alphabets = []
     for l in letters:
         for a in alphabets:
-            if l in alphabets[a]:
-                present_alphabets[a] = True
+            if l in alphabets[a] and a not in present_alphabets:
+                present_alphabets.append(a)
                 break
     return present_alphabets
 

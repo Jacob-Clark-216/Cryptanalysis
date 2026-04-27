@@ -1,4 +1,5 @@
 from pathlib import Path
+import alphabets
 
 # Take file location from the user
 def get_file_location():
@@ -28,7 +29,7 @@ words = content.replace("\n", " ").split(" ")
 
 # Record Characters
 chars = list(content.replace("\n", ""))
-unique_chars = set(content.replace("\n", " "))
+unique_chars = list(set(content.replace("\n", " ")))
 
 # Identify character counts
 char_counts = {}
@@ -39,12 +40,18 @@ char_frequency = {}
 for c in unique_chars:
     char_frequency[c] = (char_counts[c]*100)/len(chars)
 
+# Identify alphabets present
+present_alphabets = alphabets.check_alphabets(unique_chars)
+
 # Provide Output
 output = "\n\nFile contains:\n"
 output += f"{len(lines)} lines\n"
 output += f"{len(words)} words\n"
 output += f"{len(chars)} non-whitespace characters\n\n"
-output += f"{len(unique_chars)} Unique Characters Found: {unique_chars}\n\n"
+output = f"{len(present_alphabets)} character types:\n"
+for a in present_alphabets:
+    output += a + "\n"
+output += f"\n{len(unique_chars)} Unique Characters Found: {unique_chars}\n\n"
 output += f"Character stats:\n"
 for i in char_counts:
     output += f"{i} | {char_counts[i]} | {char_frequency[i]:.2f}%\n"
