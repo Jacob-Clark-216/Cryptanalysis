@@ -1,5 +1,6 @@
 from pathlib import Path
 import content_processor as cp
+import alphabets
 
 # Take file location from the user
 def get_file_location():
@@ -31,6 +32,9 @@ print("Processing Characters")
 chars = cp.get_characters(content)
 unique_chars = cp.unique(chars)
 char_counts = cp.count(chars)
+
+# Identify alphabets present
+present_alphabets = alphabets.check_alphabets(unique_chars)
 
 # Provide Output
 output = "\n\nFile contains:\n"
